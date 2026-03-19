@@ -1,14 +1,14 @@
 import "./Footer.css";
 
 function Footer() {
-    return (
+  return (
     <footer>
-        <p className="footer__text">
-            <div className="footer__name">Developed by Dylan Mannan</div>
-            <div className="footer__date">2026</div>
-        </p>
+      <p className="footer__text">
+        <span className="footer__name">Developed by Dylan Mannan</span>
+        <span className="footer__date">2026</span>
+      </p>
     </footer>
-    );
-};
+  );
+}
 
 export default Footer;
