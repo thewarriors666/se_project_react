@@ -1,0 +1,26 @@
+.modal__content_type_image {
+  padding: 0;
+  overflow: hidden;
+}
+
+.modal__image {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.modal__caption {
+  margin: 0;
+  padding-bottom: 12px;
+}
+
+.modal__weather {
+  margin: 0;
+}
+
+.modal__footer {
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 20px;
+  padding-bottom: 32px;
+}
