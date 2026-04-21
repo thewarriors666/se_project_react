@@ -21,7 +21,7 @@
 }
 
 .header__add-clothes-btn {
-  margin: 0 20px 0 auto;
+  margin: 0 20px 0 0;
   background: transparent;
   border-style: none;
   font-family: Cabinet Grotesk;
@@ -38,4 +38,9 @@
 
 .header__username {
   margin: 0;
+}
+
+.header__nav-link {
+  color: black;
+  text-decoration: none;
 }

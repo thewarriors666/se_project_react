@@ -6,7 +6,7 @@ export function useForm(defaultValues) {
   function handleChange(evt) {
     const { id, name, value } = evt.target;
     const key = name || id;
-    setValues({ ...values, [id]: value });
+    setValues({ ...values, [key]: value });
   }
 
   return { values, setValues, handleChange };

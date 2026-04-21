@@ -6,6 +6,8 @@
   cursor: pointer;
   overflow: hidden;
   position: relative;
+  margin-left: auto;
+  margin-right: 20px;
 }
 
 .toggle-switch__checkbox {
