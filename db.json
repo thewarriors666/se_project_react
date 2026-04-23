@@ -91,9 +91,9 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
     },
     {
-      "name": "asdasda",
+      "name": "asd",
       "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjsl2z8cb3JMvcrf_xsJMFtUnxaveuxHF9aA&s",
-      "weather": "warm",
+      "weather": "cold",
       "_id": 17
     }
   ]

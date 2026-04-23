@@ -1,6 +1,10 @@
 .clothes-section__row {
   display: flex;
   gap: 20px;
+  border-style: none;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 .clothes-section__list {
@@ -16,4 +20,14 @@
 .clothes-section {
   flex-grow: 1;
   padding-left: 242px;
+}
+
+.clothes-section__add-btn {
+  background: transparent;
+  border-style: none;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
 }

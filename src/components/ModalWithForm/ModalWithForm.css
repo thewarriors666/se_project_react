@@ -29,6 +29,7 @@
   right: 28px;
   background-color: #00000000;
   border-style: none;
+  cursor: pointer;
 }
 
 .modal__content {
