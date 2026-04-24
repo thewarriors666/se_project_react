@@ -91,10 +91,16 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
     },
     {
-      "name": "asd",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjsl2z8cb3JMvcrf_xsJMFtUnxaveuxHF9aA&s",
-      "weather": "cold",
+      "name": "Cool Jacket",
+      "imageUrl": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSHvqvk8NNNCXE5QWaa58AUi1R8kl1yct85ZtydZOdTZjgkDD8-95EHobPGxhdKgSmVPGw9Si2_U_IfTExTqy81UucJNi5soAl5dnvFshjHazauiGnBasdTCQ&usqp=CAc",
+      "weather": "warm",
       "_id": 17
+    },
+    {
+      "name": "Cool Jacket",
+      "imageUrl": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQJicOeSlZGxsf9mSWNv6Dq-o0mZ9ymgamAI8Y9QLL_5aLzwuinTbDq-CBZmE938higwBDPoDl0ew3o54GXCgGSyG88adMq-GVIkGpYYxvC35A67sW787nAcSj7xxABW3oh78D_K8jleg&usqp=CAc",
+      "weather": "cold",
+      "_id": 18
     }
   ]
 }

@@ -8,6 +8,7 @@ function ModalWithForm({
   onClose,
   onAddItem,
   onSubmit,
+  isFormValid,
 }) {
   return (
     <div className={`modal ${activeModal === "add-garment" && "modal_opened"}`}>
@@ -18,7 +19,11 @@ function ModalWithForm({
         </button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <button type="submit" className="modal__submit">
+          <button
+            type="submit"
+            className="modal__submit"
+            disabled={!isFormValid}
+          >
             {buttonText}
           </button>
         </form>

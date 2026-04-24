@@ -86,7 +86,7 @@
   height: 36px;
   align-content: center;
   flex-wrap: wrap;
-  background-color: #0000004d;
+  background-color: #000000;
   color: #ffffff;
   border-radius: 4px;
   border-style: none;
@@ -95,4 +95,15 @@
   font-size: 16px;
   line-height: 20px;
   margin-top: 32px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal__submit:hover {
+  background-color: #00000099;
+}
+
+.modal__submit:disabled {
+  background-color: #0000004d;
+  cursor: not-allowed;
 }
