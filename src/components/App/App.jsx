@@ -46,10 +46,13 @@ function App() {
       weather: inputValues.weatherType,
     };
 
-    return addItem(newCardData).then((savedItem) => {
-      setClothingItems((items) => [savedItem ?? newCardData, ...items]);
-      closeActiveModal();
-    });
+    return addItem(newCardData)
+      .then((savedItem) => {
+        setClothingItems((items) => [savedItem ?? newCardData, ...items]);
+        closeActiveModal();
+        resetForm();
+      })
+      .catch(console.error);
   };
 
   const onDeleteItem = (id) => {

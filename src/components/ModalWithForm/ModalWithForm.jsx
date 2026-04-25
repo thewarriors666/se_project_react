@@ -1,4 +1,5 @@
 import "./ModalWithForm.css";
+import closeButton from "../../assets/closebutton.svg";
 
 function ModalWithForm({
   children,
@@ -6,7 +7,6 @@ function ModalWithForm({
   title,
   activeModal,
   onClose,
-  onAddItem,
   onSubmit,
   isFormValid,
 }) {
@@ -15,7 +15,7 @@ function ModalWithForm({
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
         <button onClick={onClose} type="button" className="modal__close">
-          <img src="src\assets\closebutton.svg" alt="close button" />
+          <img src={closeButton} alt="Close" />
         </button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
