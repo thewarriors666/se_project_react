@@ -45,3 +45,18 @@
   color: black;
   text-decoration: none;
 }
+
+.header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header__avatar_placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c5c5c5;
+  color: #fff;
+}

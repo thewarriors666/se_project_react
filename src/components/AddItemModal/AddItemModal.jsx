@@ -26,6 +26,7 @@ const AddItemModal = ({ activeModal, onAddItem, onClose }) => {
 
   return (
     <ModalWithForm
+      modalName="add-garment"
       title="New garment"
       buttonText="Add garment"
       activeModal={activeModal}

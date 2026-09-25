@@ -1,3 +1,23 @@
+export const getUserCoordinates = () => {
+  return new Promise((resolve, reject) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        },
+        (error) => {
+          reject(new Error(`Geolocation error: ${error.message}`));
+        }
+      );
+    } else {
+      reject(new Error("Geolocation is not supported by this browser"));
+    }
+  });
+};
+
 export const getWeather = ({ latitude, longitude }, apiKey) => {
   return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}
 `).then((res) => {

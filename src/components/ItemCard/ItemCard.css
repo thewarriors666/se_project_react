@@ -42,3 +42,11 @@
   line-height: 24px;
   letter-spacing: 0%;
 }
+
+.card__like-button_active {
+  color: #ff4d00;
+}
+
+.card__like-button_hidden {
+  display: none;
+}
