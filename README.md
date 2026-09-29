@@ -4,7 +4,7 @@
 
 &#x20; - Link to the backend repo
 
-&#x09;-- https://github.com/thewarriors666/se\_project\_react --
+&#x09;-- https://github.com/thewarriors666/se_project_express --
 
 &#x20; - Technologies and techniques used are as follows
 
