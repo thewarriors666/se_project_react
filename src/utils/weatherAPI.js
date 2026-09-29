@@ -1,3 +1,5 @@
+import { handleServerResponse } from "./api.js";
+
 export const getUserCoordinates = () => {
   return new Promise((resolve, reject) => {
     if (navigator.geolocation) {
@@ -10,7 +12,7 @@ export const getUserCoordinates = () => {
         },
         (error) => {
           reject(new Error(`Geolocation error: ${error.message}`));
-        }
+        },
       );
     } else {
       reject(new Error("Geolocation is not supported by this browser"));
@@ -19,14 +21,9 @@ export const getUserCoordinates = () => {
 };
 
 export const getWeather = ({ latitude, longitude }, apiKey) => {
-  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}
-`).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-  });
+  return fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`,
+  ).then(handleServerResponse);
 };
 
 export const filterWeatherData = (data) => {
