@@ -1,7 +1,7 @@
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({ activeModal, onRegister, onClose }) => {
+const RegisterModal = ({ activeModal, onRegister, onClose, onLoginClick }) => {
   const defaultValues = { name: "", avatar: "", email: "", password: "" };
   const { values, handleChange, setValues } = useForm(defaultValues);
 
@@ -28,6 +28,15 @@ const RegisterModal = ({ activeModal, onRegister, onClose }) => {
       onClose={onClose}
       onSubmit={handleSubmit}
       isFormValid={isFormValid}
+      secondaryAction={
+        <button
+          type="button"
+          className="modal__secondary-action"
+          onClick={onLoginClick}
+        >
+          or Log In
+        </button>
+      }
     >
       <label htmlFor="name" className="modal__label">
         Name

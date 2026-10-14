@@ -21,6 +21,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
 import { getItems, addItem, removeItem, updateUser } from "../../utils/api.js";
 import { signup, signin, checkToken } from "../../utils/auth";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -48,6 +49,14 @@ function App() {
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
+  };
+
+  const handleLoginClick = () => {
+    setActiveModal("login");
+  };
+
+  const handleRegisterClick = () => {
+    setActiveModal("register");
   };
 
   const onAddItem = (inputValues) => {
@@ -190,7 +199,13 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page">
           <div className="page__content">
-            <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+            <Header
+              handleAddClick={handleAddClick}
+              weatherData={weatherData}
+              isLoggedIn={isLoggedIn}
+              handleLoginClick={handleLoginClick}
+              handleRegisterClick={handleRegisterClick}
+            />
             <Routes>
               <Route
                 path="/"
@@ -205,12 +220,14 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <Profile
-                    onCardClick={handleCardClick}
-                  clothingItems={clothingItems}
-                  handleAddClick={handleAddClick}
-                  onSignOut={handleSignOut}
-                />
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <Profile
+                      onCardClick={handleCardClick}
+                      clothingItems={clothingItems}
+                      handleAddClick={handleAddClick}
+                      onSignOut={handleSignOut}
+                    />
+                  </ProtectedRoute>
                 }
               />
             </Routes>
@@ -232,11 +249,13 @@ function App() {
             activeModal={activeModal}
             onClose={closeActiveModal}
             onRegister={handleRegister}
+            onLoginClick={handleLoginClick}
           />
           <LoginModal
             activeModal={activeModal}
             onClose={closeActiveModal}
             onLogin={handleLogin}
+            onRegisterClick={handleRegisterClick}
           />
           <EditProfileModal
             activeModal={activeModal}

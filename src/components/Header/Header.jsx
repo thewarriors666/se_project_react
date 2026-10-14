@@ -7,7 +7,13 @@ import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  handleAddClick,
+  weatherData,
+  isLoggedIn,
+  handleLoginClick,
+  handleRegisterClick,
+}) {
   const currentUser = useContext(CurrentUserContext);
   const userName = currentUser?.name || "User";
   const userInitial = userName.charAt(0).toUpperCase();
@@ -25,32 +31,53 @@ function Header({ handleAddClick, weatherData }) {
         {currentDate}, {weatherData.city}
       </p>
       <ToggleSwitch />
-      <button
-        onClick={handleAddClick}
-        type="button"
-        className="header__add-clothes-btn"
-      >
-        + Add clothes
-      </button>
-      <NavLink className="header__nav-link" to="/profile">
-        <div className="header__user-container">
-          <p className="header__username">{userName}</p>
-          {currentUser?.avatar ? (
-            <img
-              src={currentUser.avatar}
-              alt={`${userName}'s avatar`}
-              className="header__avatar"
-            />
-          ) : (
-            <div
-              className="header__avatar header__avatar_placeholder"
-              aria-label={`${userName}'s avatar`}
-            >
-              {userInitial}
+      {isLoggedIn ? (
+        <>
+          <button
+            onClick={handleAddClick}
+            type="button"
+            className="header__add-clothes-btn"
+          >
+            + Add clothes
+          </button>
+          <NavLink className="header__nav-link" to="/profile">
+            <div className="header__user-container">
+              <p className="header__username">{userName}</p>
+              {currentUser?.avatar ? (
+                <img
+                  src={currentUser.avatar}
+                  alt={`${userName}'s avatar`}
+                  className="header__avatar"
+                />
+              ) : (
+                <div
+                  className="header__avatar header__avatar_placeholder"
+                  aria-label={`${userName}'s avatar`}
+                >
+                  {userInitial}
+                </div>
+              )}
             </div>
-          )}
+          </NavLink>
+        </>
+      ) : (
+        <div className="header__auth-buttons">
+          <button
+            className="header__auth-button"
+            type="button"
+            onClick={handleRegisterClick}
+          >
+            Sign Up
+          </button>
+          <button
+            className="header__auth-button"
+            type="button"
+            onClick={handleLoginClick}
+          >
+            Log In
+          </button>
         </div>
-      </NavLink>
+      )}
     </header>
   );
 }

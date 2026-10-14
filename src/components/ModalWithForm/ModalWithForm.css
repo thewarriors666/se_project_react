@@ -107,3 +107,22 @@
   background-color: #0000004d;
   cursor: not-allowed;
 }
+
+.modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.modal__secondary-action {
+  margin-top: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #808080;
+  font-family: Cabinet Grotesk, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  cursor: pointer;
+}
