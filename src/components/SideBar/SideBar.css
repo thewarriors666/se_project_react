@@ -1,22 +1,43 @@
-.sidebar__user-container {
+.sidebar {
   display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  gap: 16px;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.sidebar__avatar {
+.sidebar__user-container {
   display: flex;
   align-items: center;
   gap: 12px;
-  height: 56px;
+  margin-bottom: 12px;
+}
+
+.sidebar__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .sidebar__username {
   margin: 0;
-  font-weight: 700;
-  font-style: Bold;
-  font-size: 20px;
-  line-height: 24px;
-  letter-spacing: 0%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.sidebar__edit-button,
+.sidebar__sign-out-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sidebar__sign-out-button {
+  margin-top: 6px;
 }

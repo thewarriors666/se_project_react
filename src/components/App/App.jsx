@@ -19,7 +19,14 @@ import {
 } from "../../utils/weatherAPI";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit.jsx";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
-import { getItems, addItem, removeItem, updateUser } from "../../utils/api.js";
+import {
+  getItems,
+  addItem,
+  removeItem,
+  updateUser,
+  addCardLike,
+  removeCardLike,
+} from "../../utils/api.js";
 import { signup, signin, checkToken } from "../../utils/auth";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
@@ -67,19 +74,11 @@ function App() {
       imageUrl: inputValues.imageUrl,
       weather: inputValues.weatherType,
     };
-    token
-
-      .then((savedItem) => {
-        setClothingItems((items) => [savedItem.data, ...items]);
-        closeActiveModal();
-      })
-      .catch(console.error);
 
     return addItem(newCardData, token)
       .then((savedItem) => {
         setClothingItems((items) => [savedItem ?? newCardData, ...items]);
         closeActiveModal();
-        resetForm();
       })
       .catch(console.error);
   };
@@ -127,30 +126,28 @@ function App() {
     setActiveModal("edit-profile");
   };
 
-  const handleUpdateUser = (values) => {
+  const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
 
-    const handleCardLike = ({ id, isLiked }) => {
-      const token = localStorage.getItem("jwt");
+    !isLiked
+      ? addCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item)),
+            );
+          })
+          .catch((err) => console.log(err))
+      : removeCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item)),
+            );
+          })
+          .catch((err) => console.log(err));
+  };
 
-      !isLiked
-        ? api
-            .addCardLike(id, token)
-            .then((updatedCard) => {
-              setClothingItems((cards) =>
-                cards.map((item) => (item._id === id ? updatedCard : item)),
-              );
-            })
-            .catch((err) => console.log(err))
-        : api
-            .removeCardLike(id, token)
-            .then((updatedCard) => {
-              setClothingItems((cards) =>
-                cards.map((item) => (item._id === id ? updatedCard : item)),
-              );
-            })
-            .catch((err) => console.log(err));
-    };
+  const handleUpdateUser = (values) => {
+    const token = localStorage.getItem("jwt");
 
     return updateUser(values, token)
       .then((updatedUser) => {
@@ -213,7 +210,9 @@ function App() {
                   <Main
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
+                    onCardLike={handleCardLike}
                     clothingItems={clothingItems}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               />
@@ -226,6 +225,8 @@ function App() {
                       clothingItems={clothingItems}
                       handleAddClick={handleAddClick}
                       onSignOut={handleSignOut}
+                      onCardLike={handleCardLike}
+                      isLoggedIn={isLoggedIn}
                     />
                   </ProtectedRoute>
                 }

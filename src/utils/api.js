@@ -23,8 +23,22 @@ export const addItem = ({ name, imageUrl, weather }, token) => {
   }).then(handleServerResponse);
 };
 
-export const removeItem = (itemID) => {
+export const removeItem = (itemID, token) => {
   return fetch(`${baseUrl}/items/${itemID}`, {
+    method: "DELETE",
+    headers: getAuthHeaders(token),
+  }).then(handleServerResponse);
+};
+
+export const addCardLike = (itemID, token) => {
+  return fetch(`${baseUrl}/items/${itemID}/likes`, {
+    method: "PUT",
+    headers: getAuthHeaders(token),
+  }).then(handleServerResponse);
+};
+
+export const removeCardLike = (itemID, token) => {
+  return fetch(`${baseUrl}/items/${itemID}/likes`, {
     method: "DELETE",
     headers: getAuthHeaders(token),
   }).then(handleServerResponse);

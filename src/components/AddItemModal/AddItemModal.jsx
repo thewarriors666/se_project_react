@@ -18,9 +18,7 @@ const AddItemModal = ({ activeModal, onAddItem, onClose }) => {
     evt.preventDefault();
 
     onAddItem(values)
-      .then(() => {
-        resetForm();
-      })
+      .then(() => {})
       .catch(console.error);
   }
 
