@@ -117,7 +117,12 @@ function App() {
     return signin(values)
       .then((data) => {
         localStorage.setItem("jwt", data.token);
-        closeActiveModal();
+
+        return checkToken(data.token).then((user) => {
+          setCurrentUser(user);
+          setIsLoggedIn(true);
+          closeActiveModal();
+        });
       })
       .catch(console.error);
   };
@@ -225,6 +230,7 @@ function App() {
                       clothingItems={clothingItems}
                       handleAddClick={handleAddClick}
                       onSignOut={handleSignOut}
+                      onEditProfile={handleEditProfileClick}
                       onCardLike={handleCardLike}
                       isLoggedIn={isLoggedIn}
                     />
