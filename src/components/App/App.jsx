@@ -77,7 +77,8 @@ function App() {
 
     return addItem(newCardData, token)
       .then((savedItem) => {
-        setClothingItems((items) => [savedItem ?? newCardData, ...items]);
+        const item = savedItem?.data ?? savedItem ?? newCardData;
+        setClothingItems((items) => [item, ...items]);
         closeActiveModal();
       })
       .catch(console.error);
@@ -106,10 +107,7 @@ function App() {
 
   const handleRegister = (values) => {
     return signup(values)
-      .then((user) => {
-        console.log(user);
-        closeActiveModal();
-      })
+      .then(() => handleLogin(values))
       .catch(console.error);
   };
 
@@ -269,9 +267,6 @@ function App() {
             onClose={closeActiveModal}
             onUpdateUser={handleUpdateUser}
           />
-          <CurrentUserContext.Provider value={currentUser}>
-            <div className="page"></div>
-          </CurrentUserContext.Provider>
         </div>
       </CurrentUserContext.Provider>
     </CurrentTemperatureUnitContext.Provider>
